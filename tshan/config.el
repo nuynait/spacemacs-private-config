@@ -70,3 +70,50 @@ same directory as the org-buffer and insert a link to this file."
                                         ; insert into file if correctly taken
   (if (file-exists-p filename)
       (insert (concat "[[file:" filename "]]"))))
+
+;; ORG - recursively adding files into aganda
+;; Thanks to https://github.com/suvayu/.emacs.d/blob/master/lisp/nifty.el
+(defun sa-find-org-file-recursively (&optional directory filext)
+  "Return .org and .org_archive files recursively from DIRECTORY.
+If FILEXT is provided, return files with extension FILEXT instead."
+  (interactive "DDirectory: ")
+  (let* (org-file-list
+	 (case-fold-search t)	      ; filesystems are case sensitive
+	 (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
+	 (filext (or filext "org$\\\|org_archive"))
+	 (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
+	 (cur-dir-list (directory-files directory t file-name-regex)))
+    ;; loop over directory listing
+    (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
+      (cond
+       ((file-regular-p file-or-dir) ; regular files
+	(if (string-match fileregex file-or-dir) ; org files
+	    (add-to-list 'org-file-list file-or-dir)))
+       ((file-directory-p file-or-dir)
+	(dolist (org-file (sa-find-org-file-recursively file-or-dir filext)
+			  org-file-list) ; add files found to result
+	  (add-to-list 'org-file-list org-file)))))))
+
+;; (setq org-agenda-text-search-extra-files
+;; use org-agenda-files to enable tag search
+(setq org-agenda-files
+      (append (sa-find-org-file-recursively "~/Dropbox/ORG Notebook/" "org")))
+
+;; ORG - global tags list
+;; To make this easy to edit, this should be the last thing of this config file
+(setq org-tag-alist '(
+                      ;; major tags
+                      ("Objc" . ?o)
+                      ("Swift" . ?s)
+                      ("Xcode" . ?x)
+                      ("Emacs" . ?e)
+                      ("OrgMode" . ?m)
+                      ;; iOS tags
+                      ("UIViewController" . nil)
+                      ("UITableViewController" . nil)
+                      ;; cs tags
+                      ("OOP" . nil) ;; object oriented programming
+                      ("DataStructure" .nil) ;; data structure
+                      ("Algorithm" . nil)
+                      ("Math" . nil)
+                      ))

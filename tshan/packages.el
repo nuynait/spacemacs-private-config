@@ -34,6 +34,7 @@
 (defconst tshan-packages
   '(youdao-dictionary
     company ;; when changing exists package, need to include it as well
+    deft
     )
   )
 
@@ -44,6 +45,34 @@
     :init
     (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
     )
+  )
+
+;; deft related settings
+(defun tshan/post-init-deft ()
+  (setq deft-directory "~/Dropbox/ORG Notebook")
+  (setq deft-recursive t)
+  ;; use keybinding to change deft-directory
+  (spacemacs/set-leader-keys "od" 'deft)
+
+  ;; override function
+  (defun spacemacs/deft ()
+    "Helper to call deft and then fix things so that it is nice and works"
+    (interactive)
+    (deft)
+    ;; Hungry delete wrecks deft's DEL override
+    (when (fboundp 'hungry-delete-mode)
+      (hungry-delete-mode -1)))
+    ;; When opening it you always want to filter right away
+    ;; (evil-insert-state nil))
+
+  ;; config keybindings
+  :config (spacemacs/set-leader-keys-for-major-mode 'deft-mode
+            "d" 'deft-delete-file
+            "i" 'deft-toggle-incremental-search
+            "n" 'deft-new-file
+            "r" 'deft-rename-file
+            "o" 'deft-open-file-other-window
+            )
   )
 
 ;; make auto complete min prefix 1
