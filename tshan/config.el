@@ -54,6 +54,14 @@
 (setq org-refile-targets '((nil :maxlevel . 9)
                            (org-agenda-files :maxlevel . 9)))
 
+;; ORG - Agenda
+(setq org-agenda-start-on-weekday 0) ;; starts on Sunday
+(setq org-agenda-timegrid-use-ampm 1) ;; use 12 hour clock in agenda
+(setq org-agenda-time-grid
+      '((daily today today)
+        #("----------------" 0 16 (org-heading t))
+        (800 1000 1200 1400 1600 1800 2000 2200 2359))) ;; show default time lines
+
 ;; ORG - screenshot & insert into file
 (defun my-org-screenshot ()
   "Take a screenshot into a time stamped unique-named file in the
