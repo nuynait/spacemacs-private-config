@@ -2,7 +2,8 @@
 (setq ns-pop-up-frames nil)
 
 
-;; ORG - level face setting
+;; ORG - face setting
+;; make org level all same size
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.0 ))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.0 ))))
@@ -13,6 +14,11 @@
  '(org-level-7 ((t (:inherit outline-3 :height 1.0 ))))
  '(org-level-8 ((t (:inherit outline-3 :height 1.0 ))))
  )
+;; make priority show different colors
+(setq org-priority-faces
+   '((?A . (:foreground "red" :weight 'bold))
+     (?B . (:foreground "yellow"))
+     (?C . (:foreground "green"))))
 
 ;; ORG - todo workflow
 (setq org-todo-keywords
