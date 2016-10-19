@@ -1,0 +1,5 @@
+* Install
+  1. download Mac Emacs
+  2. install spacemacs [[http://spacemacs.org/][Here]]
+  4. clone this repository to ~/.spacemacs.d/
+  5. open Emacs to install
