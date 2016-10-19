@@ -35,6 +35,7 @@
   '(youdao-dictionary
     company ;; when changing exists package, need to include it as well
     deft
+    swift-mode
     )
   )
 
@@ -46,6 +47,12 @@
     (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
     )
   )
+
+(defun tshan/post-init-swift-mode ()
+    ;; customize setting for swift package
+    (setq swift-mode:basic-offset 2)
+    )
+
 
 ;; deft related settings
 (defun tshan/post-init-deft ()
