@@ -35,7 +35,10 @@
 
 ;; ORG - agenda custom command
 (setq org-agenda-custom-commands
-      `(;; match those tagged with :inbox:, are not scheduled, are not DONE.
+      `(;; today
+        ("ia" "Today" agenda "All the todo files for today"
+         ((org-agenda-files '("~/Dropbox/ORG Notebook/Idea Capture/gtd"))))
+        ;; match those tagged with :inbox:, are not scheduled, are not DONE.
         ("it" "[t]odo that unscheduled" tags "-SCHEDULED={.+}/!+TODO|+STARTED|+WAITING")
         ("ip" "[p]rogramming tasks that unscheduled" tags "-SCHEDULED={.+}/!+BUG|+CRASH|+REQUEST|+TEST")
         ("ib" "[b]ug that unscheduled" tags "-SCHEDULED={.+}/!+BUG|+CRASH")
