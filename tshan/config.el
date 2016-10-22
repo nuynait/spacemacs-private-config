@@ -1,7 +1,6 @@
 ;; (global-linum-mode)
 (setq ns-pop-up-frames nil)
 
-
 ;; ORG - face setting
 ;; make org level all same size
 (custom-set-faces
@@ -133,4 +132,5 @@ If FILEXT is provided, return files with extension FILEXT instead."
                       ("DataStructure" .nil) ;; data structure
                       ("Algorithm" . nil)
                       ("Math" . nil)
+                      ("Memory" . nil)
                       ))

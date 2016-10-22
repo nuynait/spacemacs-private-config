@@ -126,7 +126,7 @@ values."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    ;; (default nil)
-   dotspacemacs-startup-lists '((recents . 8) (projects . 8))
+   dotspacemacs-startup-lists '((agenda . 20) (recents . 8) (projects . 8))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -298,6 +298,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
   )
 
 (defun dotspacemacs/user-config ()
@@ -307,17 +308,18 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; make sure q or wq do not quit emacs
-  (let ((new-evil-quit (lambda ()
-                         (interactive)
-                         (kill-this-buffer)))
-        (new-evil-write-quit (lambda ()
-                               (interactive)
-                               (save-buffer)
-                               (kill-this-buffer))))
-    (evil-ex-define-cmd "q" new-evil-quit)
-    (evil-ex-define-cmd "q!" new-evil-quit)
-    (evil-ex-define-cmd "wq" new-evil-write-quit))
+;; make sure q or wq do not quit emacs 
+(let ((new-evil-quit (lambda () 
+                       (interactive) 
+                       (kill-this-buffer))) 
+      (new-evil-write-quit (lambda () 
+                             (interactive) 
+                             (save-buffer) 
+                             (kill-this-buffer)))) 
+  (evil-ex-define-cmd "q" new-evil-quit) 
+  (evil-ex-define-cmd "q!" new-evil-quit) 
+  (evil-ex-define-cmd "wq" new-evil-write-quit))
+  (load custom-file)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
