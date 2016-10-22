@@ -308,43 +308,16 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-;; make sure q or wq do not quit emacs 
-(let ((new-evil-quit (lambda () 
-                       (interactive) 
-                       (kill-this-buffer))) 
-      (new-evil-write-quit (lambda () 
-                             (interactive) 
-                             (save-buffer) 
-                             (kill-this-buffer)))) 
-  (evil-ex-define-cmd "q" new-evil-quit) 
-  (evil-ex-define-cmd "q!" new-evil-quit) 
+;; make sure q or wq do not quit emacs
+(let ((new-evil-quit (lambda ()
+                       (interactive)
+                       (kill-this-buffer)))
+      (new-evil-write-quit (lambda ()
+                             (interactive)
+                             (save-buffer)
+                             (kill-this-buffer))))
+  (evil-ex-define-cmd "q" new-evil-quit)
+  (evil-ex-define-cmd "q!" new-evil-quit)
   (evil-ex-define-cmd "wq" new-evil-write-quit))
   (load custom-file)
   )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/Dropbox/ORG Notebook/How do I organize my org notes along with my GTD Items.org" "/Users/tshan/Dropbox/ORG Notebook/iOS Development/text.org" "/Users/tshan/Dropbox/ORG Notebook/Idea Capture/gtd/mapsted-gtd.org" "/Users/tshan/Dropbox/ORG Notebook/Idea Capture/gtd/life-gtd.org" "/Users/tshan/Dropbox/ORG Notebook/Idea Capture/gtd/interests-gtd.org" "/Users/tshan/Dropbox/ORG Notebook/Idea Capture/gtd/hourglasslab-gtd.org" "/Users/tshan/Dropbox/ORG Notebook/Idea Capture/gtd/gtd.org" "/Users/tshan/Dropbox/ORG Notebook/Idea Capture/journal.org" "/Users/tshan/Dropbox/ORG Notebook/How do I Organize My Org Notes Along With My GTD Items.org")))
- '(package-selected-packages
-   (quote
-    (web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode deft company-sourcekit sourcekit dash-functional flycheck-swift swift-mode youdao-dictionary names chinese-word-at-point wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy smeargle orgit org-projectile org-present org org-pomodoro alert log4e gntp org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-web web-completion-data company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
- '(org-level-4 ((t (:inherit outline-3 :height 1.0))))
- '(org-level-5 ((t (:inherit outline-3 :height 1.0))))
- '(org-level-6 ((t (:inherit outline-3 :height 1.0))))
- '(org-level-7 ((t (:inherit outline-3 :height 1.0))))
- '(org-level-8 ((t (:inherit outline-3 :height 1.0)))))
