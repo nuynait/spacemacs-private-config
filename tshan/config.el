@@ -18,6 +18,8 @@
    '((?A . (:foreground "red" :weight 'bold))
      (?B . (:foreground "yellow"))
      (?C . (:foreground "green"))))
+;; make org-agenda have the same font size
+(setq spacemacs-theme-org-agenda-height nil)
 
 ;; ORG - todo workflow
 (setq org-todo-keywords
@@ -63,6 +65,9 @@
       '((daily today today)
         #("----------------" 0 16 (org-heading t))
         (800 1000 1200 1400 1600 1800 2000 2200 2359))) ;; show default time lines
+(setq org-agenda-current-time-string
+      #("now - - - - - - - - - - - - - - - - - - - - - - - - -" 0 53
+        (org-heading t)))
 
 ;; ORG - screenshot & insert into file
 (defun my-org-screenshot ()
@@ -114,23 +119,24 @@ If FILEXT is provided, return files with extension FILEXT instead."
 ;; use org-agenda-files to enable tag search
 (setq org-agenda-files
       (append (sa-find-org-file-recursively "~/Dropbox/ORG Notebook/" "org")))
+(setq org-tag-groups-alist-for-agenda t)
 
 ;; ORG - global tags list
 ;; To make this easy to edit, this should be the last thing of this config file
-(setq org-tag-alist '(
-                      ;; major tags
-                      ("Objc" . ?o)
-                      ("Swift" . ?s)
-                      ("Xcode" . ?x)
-                      ("Emacs" . ?e)
-                      ("OrgMode" . ?m)
-                      ;; iOS tags
-                      ("UIViewController" . nil)
-                      ("UITableViewController" . nil)
-                      ;; cs tags
-                      ("OOP" . nil) ;; object oriented programming
-                      ("DataStructure" .nil) ;; data structure
-                      ("Algorithm" . nil)
-                      ("Math" . nil)
-                      ("Memory" . nil)
-                      ))
+;; (setq org-tag-alist '(
+;;                       ;; major tags
+;;                       ("Objc" . ?o)
+;;                       ("Swift" . ?s)
+;;                       ("Xcode" . ?x)
+;;                       ("Emacs" . ?e)
+;;                       ("OrgMode" . ?m)
+;;                       ;; iOS tags
+;;                       ("UIViewController")
+;;                       ("UITableViewController")
+;;                       ;; cs tags
+;;                       ("OOP") ;; object oriented programming
+;;                       ("DataStructure") ;; data structure
+;;                       ("Algorithm")
+;;                       ("Math")
+;;                       ("Memory")
+;;                       ))
