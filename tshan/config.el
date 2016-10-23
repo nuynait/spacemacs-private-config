@@ -18,8 +18,16 @@
    '((?A . (:foreground "red" :weight 'bold))
      (?B . (:foreground "yellow"))
      (?C . (:foreground "green"))))
-;; make org-agenda have the same font size
+
+;; make agenda today's font the same as others
 (setq spacemacs-theme-org-agenda-height nil)
+
+;; make org-agenda done tasks having the same font scale
+(custom-set-faces
+ '(org-agenda-done ((t (:foreground "#86dc2f" :height 1.0)))))
+(custom-set-faces
+ '(org-scheduled-today ((t (:foreground "#bc6ec5" :height 1.0)))))
+
 
 ;; ORG - todo workflow
 (setq org-todo-keywords
