@@ -13,6 +13,7 @@
  '(org-level-7 ((t (:inherit outline-3 :height 1.0 ))))
  '(org-level-8 ((t (:inherit outline-3 :height 1.0 ))))
  )
+
 ;; make priority show different colors
 (setq org-priority-faces
    '((?A . (:foreground "red" :weight 'bold))
@@ -44,7 +45,7 @@
 
 ;; ORG - agenda custom command
 (setq org-agenda-custom-commands
-      `(;; today
+      '(;; today
         ("ia" "Today" agenda "All the todo files for today"
          ((org-agenda-files '("~/Dropbox/ORG Notebook/Idea Capture/gtd"))))
         ;; match those tagged with :inbox:, are not scheduled, are not DONE.
@@ -76,6 +77,12 @@
 (setq org-agenda-current-time-string
       #("now - - - - - - - - - - - - - - - - - - - - - - - - -" 0 53
         (org-heading t)))
+(setq org-agenda-prefix-format '((agenda  . "%-10:T% s%?-2t") ; (agenda . " %s %-12t ")
+                                 (timeline . "%-9:T%?-2t% s")
+                                 (todo . "%i%-8:T")
+                                 (tags . "%i%-8:T")
+                                 (search . "%i%-8:T")))
+(setq org-agenda-remove-tags t)
 
 ;; ORG - screenshot & insert into file
 (defun my-org-screenshot ()
@@ -127,7 +134,10 @@ If FILEXT is provided, return files with extension FILEXT instead."
 ;; use org-agenda-files to enable tag search
 (setq org-agenda-files
       (append (sa-find-org-file-recursively "~/Dropbox/ORG Notebook/" "org")))
-(setq org-tag-groups-alist-for-agenda t)
+
+;; ORG - tag completion from all org files
+(setq org-complete-tags-always-offer-all-agenda-tags t)
+
 
 ;; ORG - global tags list
 ;; To make this easy to edit, this should be the last thing of this config file
