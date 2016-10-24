@@ -36,6 +36,7 @@
     company ;; when changing exists package, need to include it as well
     deft
     swift-mode
+    org-agenda
     )
   )
 
@@ -81,6 +82,12 @@
             "o" 'deft-open-file-other-window
             )
   )
+
+(defun tshan/post-init-org-agenda ()
+  :config (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
+            "j" 'org-agenda-clock-goto
+            "oa" 'org-agenda-archives-mode
+            ))
 
 
 ;; make auto complete min prefix 1
