@@ -1,4 +1,3 @@
-;; (global-linum-mode)
 (setq ns-pop-up-frames nil)
 
 ;; ORG - face setting
@@ -32,34 +31,42 @@
 
 ;; ORG - todo workflow
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "SUBTREE(s)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELLED(c@/!)")
-        (sequence "CRASH(c)" "BUG(b)" "REQUEST(r)" "TEST(e)" "|" "FIXED(f)")))
+      '((sequence "TODO....(t)" "SUBTREE.(s)" "WAIT....(w@/!)" "|" "DONE....(d!)" "CANCEL..(c@/!)")
+        (sequence "CRASH...(c)" "BUG.....(b)" "REQUEST.(r)" "TEST....(e)" "|" "FIXED...(f)")))
 
 (setq org-todo-keyword-faces
-      '(("WAIT" . "white")
-        ("CRASH" . "red")
-        ("BUG" . "red")
-        ("SUBTREE" . "grey")
-        ("TEST" . "turquoise1")
+      '(("WAIT...." . "white")
+        ("CRASH..." . "red")
+        ("BUG....." . "red")
+        ("SUBTREE." . "grey")
+        ("TEST...." . "turquoise1")
+        ("TODO...." . "SlateBlue2")
+        ("REQUEST." . "SlateBlue2")
         ))
 
 ;; ORG - agenda custom command
-(setq org-agenda-custom-commands
-      '(;; today
-        ("ia" "Today" agenda "All the todo files for today"
-         ((org-agenda-files '("~/Dropbox/ORG Notebook/Idea Capture/gtd"))))
-        ;; match those tagged with :inbox:, are not scheduled, are not DONE.
-        ("it" "[t]odo that unscheduled" tags "-SCHEDULED={.+}/!+TODO|+STARTED|+WAITING")
-        ("ip" "[p]rogramming tasks that unscheduled" tags "-SCHEDULED={.+}/!+BUG|+CRASH|+REQUEST|+TEST")
-        ("ib" "[b]ug that unscheduled" tags "-SCHEDULED={.+}/!+BUG|+CRASH")
-        ("if" "[f]eatures or tests that unscheduled" tags "-SCHEDULED={.+}/!+REQUEST|+TEST")
-        ("iw" "[w]aited tasks that unscheduled" tags "-SCHEDULED={.+}/!+WAIT")
-        ))
+;; (setq org-agenda-custom-commands
+;;       '(;; today
+;;         ("ia" "Today" agenda "All the todo files for today"
+;;          ((org-agenda-files '("~/Dropbox/ORG Notebook/Idea Capture/gtd"))))
+;;         ;; match those tagged with :inbox:, are not scheduled, are not DONE.
+;;         ("it" "[t]odo that unscheduled" tags "-SCHEDULED={.+}/!+TODO....")
+;;         ("ip" "[p]rogramming tasks that unscheduled" tags "-SCHEDULED={.+}/!+BUG.....|+CRASH...|+REQUEST.|+TEST....")
+;;         ("ib" "[b]ug that unscheduled" tags "-SCHEDULED={.+}/!+BUG.....|+CRASH...")
+;;         ("if" "[f]eatures or tests that unscheduled" tags "-SCHEDULED={.+}/!+REQUEST.|+TEST....")
+;;         ("iw" "[w]aited tasks that unscheduled" tags "-SCHEDULED={.+}/!+WAIT....")
+;;         ))
+
+;; don't show tasks that are scheduled or have deadlines
+;; in the normal todo list
+(setq org-agenda-todo-ignore-deadlines (quote all))
+(setq org-agenda-todo-ignore-scheduled (quote all))
+
 
 ;; ORG - idea capture
 (setq org-capture-templates
  '(("t" "Task" entry (file+headline "~/dropbox/ORG Notebook/Idea Capture/gtd/gtd.org" "Inbox")
-		 "* TODO %?\n  %i")
+		 "* TODO.... %?\n  %i")
 	 ("j" "Journal" entry (file+datetree "~/dropbox/ORG Notebook/Idea Capture/journal.org")
 	  "* %?\nEntered on %U\n  %i\n  %a")))
 
