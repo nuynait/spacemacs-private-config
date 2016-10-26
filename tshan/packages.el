@@ -87,6 +87,7 @@
   :config (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
             "j" 'org-agenda-clock-goto
             "oa" 'org-agenda-archives-mode
+            "R" 'org-refile
             ))
 
 
