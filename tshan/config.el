@@ -39,7 +39,7 @@
 ;; ORG - todo workflow
 (setq org-todo-keywords
       '((sequence "TODO....(t)" "SUBTREE.(s)" "WAIT....(w@/!)" "|" "DONE....(d!)" "CANCEL..(c@/!)")
-        (sequence "CRASH...(c)" "BUG.....(b)" "REQUEST.(r)" "TEST....(e)" "|" "FIXED...(f)")))
+        (sequence "CRASH...(C)" "BUG.....(b)" "REQUEST.(r)" "TEST....(T)" "|" "FIXED...(f)")))
 
 (setq org-todo-keyword-faces
       '(("WAIT...." . "white")
@@ -86,16 +86,17 @@
 (setq org-agenda-timegrid-use-ampm 1) ;; use 12 hour clock in agenda
 (setq org-agenda-time-grid
       '((daily today today)
-        #("----------------" 0 16 (org-heading t))
+        #("----------------" 0 4 (org-heading t))
         (800 1000 1200 1400 1600 1800 2000 2200 2359))) ;; show default time lines
 (setq org-agenda-current-time-string
       #("now - - - - - - - - - - - - - - - - - - - - - - - - -" 0 53
         (org-heading t)))
-(setq org-agenda-prefix-format '((agenda  . "%-10:T% s%?-2t") ; (agenda . " %s %-12t ")
+(setq org-agenda-prefix-format '((agenda  . "%-10:T%?-2t") ; (agenda . " %s %-12t ")
                                  (timeline . "%-9:T%?-2t% s")
                                  (todo . "%i%-8:T")
                                  (tags . "%i%-8:T")
                                  (search . "%i%-8:T")))
+(setq org-agenda-time-leading-zero t)
 (setq org-agenda-remove-tags t)
 
 ;; ORG - use org-agenda-files to enable tag search
