@@ -37,6 +37,7 @@
     deft
     swift-mode
     org-agenda
+    spaceline
     )
   )
 
@@ -54,6 +55,10 @@
     (setq swift-mode:basic-offset 2)
     )
 
+;; spaceline customization
+(defun tshan/post-init-spaceline()
+  (spacemacs/toggle-mode-line-org-clock-on)
+  )
 
 ;; deft related settings
 (defun tshan/post-init-deft ()
