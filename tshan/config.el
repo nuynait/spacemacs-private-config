@@ -15,9 +15,16 @@
 
 ;; make priority show different colors
 (setq org-priority-faces
-   '((?A . (:foreground "red" :weight 'bold))
-     (?B . (:foreground "yellow"))
-     (?C . (:foreground "green"))))
+   '((?A . (:foreground "red1" :weight 'bold))
+     (?B . (:foreground "VioletRed1"))
+     (?C . (:foreground "DeepSkyBlue3"))
+     (?D . (:foreground "DeepSkyBlue4"))
+     (?E . (:foreground "gray40"))))
+
+;; ORG - customize priority
+(setq org-highest-priority 65)
+(setq org-default-priority 67)
+(setq org-lowest-priority 69)
 
 ;; make agenda today's font the same as others
 (setq spacemacs-theme-org-agenda-height nil)
@@ -91,7 +98,7 @@
                                  (search . "%i%-8:T")))
 (setq org-agenda-remove-tags t)
 
-;; use org-agenda-files to enable tag search
+;; ORG - use org-agenda-files to enable tag search
 (setq org-agenda-files
       (append (sa-find-org-file-recursively "~/Dropbox/ORG Notebook/" "org")))
 
