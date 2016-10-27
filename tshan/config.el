@@ -52,17 +52,15 @@
         ))
 
 ;; ORG - agenda custom command
-;; (setq org-agenda-custom-commands
-;;       '(;; today
-;;         ("ia" "Today" agenda "All the todo files for today"
-;;          ((org-agenda-files '("~/Dropbox/ORG Notebook/Idea Capture/gtd"))))
-;;         ;; match those tagged with :inbox:, are not scheduled, are not DONE.
-;;         ("it" "[t]odo that unscheduled" tags "-SCHEDULED={.+}/!+TODO....")
-;;         ("ip" "[p]rogramming tasks that unscheduled" tags "-SCHEDULED={.+}/!+BUG.....|+CRASH...|+REQUEST.|+TEST....")
-;;         ("ib" "[b]ug that unscheduled" tags "-SCHEDULED={.+}/!+BUG.....|+CRASH...")
-;;         ("if" "[f]eatures or tests that unscheduled" tags "-SCHEDULED={.+}/!+REQUEST.|+TEST....")
-;;         ("iw" "[w]aited tasks that unscheduled" tags "-SCHEDULED={.+}/!+WAIT....")
-;;         ))
+(setq org-agenda-custom-commands
+      '(
+        ("p" . "筛选任务(目前无效果，需要修复)")
+        ("pa" "超级紧急的任务" tags "+PRIORITY=\"A\"")
+        ("pb" "比较紧急的任务" tags "+PRIORITY=\"B\"")
+        ("pc" "一定要完成但是不着急的任务" tags "+PRIORITY=\"C\"")
+        ("pd" "做完有好处的任务" tags "+PRIORITY=\"D\"")
+        ("pe" "无所谓做不做的任务" tags "+PRIORITY=\"E\"")
+        ))
 
 ;; don't show tasks that are scheduled or have deadlines
 ;; in the normal todo list
