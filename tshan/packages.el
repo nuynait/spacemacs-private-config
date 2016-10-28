@@ -94,11 +94,22 @@
   )
 
 (defun tshan/post-init-org-agenda ()
-  :config (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
-            "j" 'org-agenda-clock-goto
-            "oa" 'org-agenda-archives-mode
-            "R" 'org-refile
-            ))
+  :config
+  (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
+    "j" 'org-agenda-clock-goto
+    "oa" 'org-agenda-archives-mode
+    "R" 'org-refile
+    )
+  :config
+  (evilified-state-evilify-map org-agenda-mode-map
+    :mode org-agenda-mode
+    :bindings
+    "j" 'org-agenda-next-item
+    "k" 'org-agenda-previous-item
+    (kbd "C-j") 'org-agenda-next-line
+    (kbd "C-k") 'org-agenda-previous-line
+    )
+  )
 
 
 ;; make auto complete min prefix 1
