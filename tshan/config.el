@@ -35,21 +35,30 @@
 (custom-set-faces
  '(org-scheduled-today ((t (:foreground "#bc6ec5" :height 1.0)))))
 
-
 ;; ORG - todo workflow
 (setq org-todo-keywords
-      '((sequence "TODO....(t)" "SUBTREE.(s)" "WAIT....(w@/!)" "|" "DONE....(d!)" "CANCEL..(c@/!)")
-        (sequence "CRASH...(C)" "BUG.....(b)" "REQUEST.(r)" "TEST....(T)" "|" "FIXED...(f)")))
+      '((sequence "TODO....(t)" "WAIT....(w@/!)" "|" "DONE....(d!)" "CANCEL..(c@/!)")
+        (sequence "CRASH...(C)" "BUG.....(b)" "REQUEST.(r)" "TEST....(T)" "|" "FIXED...(f)")
+        (sequence "SUBTREE.(s)" "SUBNEXT.(N)" "SUBDOING(n)" "|" "SUBDONE.")))
 
 (setq org-todo-keyword-faces
       '(("WAIT...." . "white")
         ("CRASH..." . "red")
         ("BUG....." . "red")
-        ("SUBTREE." . "grey")
+        ("SUBTREE." . "slateGray4")
+        ("SUBDOING" . "DodgerBlue1")
+        ("SUBNEXT." . "slateGray3")
         ("TEST...." . "turquoise1")
-        ("TODO...." . "SlateBlue2")
-        ("REQUEST." . "SlateBlue2")
+        ("TODO...." . "DodgerBlue2")
+        ("REQUEST." . "DodgerBlue2")
+        ("DONE...." . "SpringGreen1")
+        ("CANCEL.." . "SpringGreen4")
+        ("FIXED..." . "SpringGreen1")
+        ("SUBDONE." . "SpringGreen3")
         ))
+
+(setq org-enforce-todo-dependencies t)
+(setq org-agenda-dim-blocked-tasks 'invisible)
 
 ;; ORG - agenda custom command
 (setq org-agenda-custom-commands
@@ -71,9 +80,11 @@
 ;; ORG - idea capture
 (setq org-capture-templates
  '(("t" "Task" entry (file+headline "~/dropbox/ORG Notebook/Idea Capture/gtd/gtd.org" "Inbox")
-		 "* TODO.... %?\n  %i")
-	 ("j" "Journal" entry (file+datetree "~/dropbox/ORG Notebook/Idea Capture/journal.org")
-	  "* %?\nEntered on %U\n  %i\n  %a")))
+    "* TODO.... [#C] %?\n  %i")
+   ("s" "Task in sequence" entry (file+headline "~/dropbox/ORG Notebook/Idea Capture/gtd/gtd.org" "Inbox")
+    "* SUBTREE. [#C] %?\n  :PROPERTIES:\n  :ORDERED:  t\n  :END:\n  %i")
+   ("j" "Journal" entry (file+datetree "~/dropbox/ORG Notebook/Idea Capture/journal.org")
+    "* %?\nEntered on %U\n  %i\n  %a")))
 
 ;; ORG - refile
 (setq org-refile-targets '((nil :maxlevel . 9)

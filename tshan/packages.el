@@ -38,6 +38,7 @@
     swift-mode
     org-agenda
     spaceline
+    org
     )
   )
 
@@ -48,6 +49,10 @@
     :init
     (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
     )
+  )
+
+(defun tshan/post-init-org ()
+  (setq org-startup-with-inline-images nil)
   )
 
 (defun tshan/post-init-swift-mode ()
