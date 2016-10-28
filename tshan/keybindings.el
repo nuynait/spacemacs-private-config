@@ -7,3 +7,5 @@
 
 ;; dictionary auto-completion
 (spacemacs/set-leader-keys "tc" 'toggle-company-ispell)
+
+;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)

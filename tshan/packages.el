@@ -100,7 +100,6 @@
     "oa" 'org-agenda-archives-mode
     "R" 'org-refile
     )
-  :config
   (evilified-state-evilify-map org-agenda-mode-map
     :mode org-agenda-mode
     :bindings
@@ -108,6 +107,7 @@
     "k" 'org-agenda-previous-item
     (kbd "C-j") 'org-agenda-next-line
     (kbd "C-k") 'org-agenda-previous-line
+    (kbd "<escape>") 'org-agenda-exit
     )
   )
 
