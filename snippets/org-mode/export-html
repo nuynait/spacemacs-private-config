@@ -1,0 +1,12 @@
+ -*- mode: snippet -*-
+# name: export-html
+# key: exporthtml
+# --
+
+# -*- mode: org; -*-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://me.hourglasslab.com/org-mode-export/htmlize.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://me.hourglasslab.com/org-mode-export/readtheorg.css">
+#+HTML_HEAD: <script src="http://me.hourglasslab.com/org-mode-export/jquery.min.js"></script>
+#+HTML_HEAD: <script src="http://me.hourglasslab.com/org-mode-export/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://me.hourglasslab.com/org-mode-export/jquery.stickytableheaders.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://me.hourglasslab.com/org-mode-export/readtheorg.js"></script>
