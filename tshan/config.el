@@ -58,7 +58,7 @@
         ))
 
 (setq org-enforce-todo-dependencies t)
-(setq org-agenda-dim-blocked-tasks 'invisible)
+(setq org-agenda-dim-blocked-tasks t)
 
 ;; ORG - agenda custom command
 (setq org-agenda-custom-commands
