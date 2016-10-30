@@ -52,6 +52,9 @@
   )
 
 (defun tshan/post-init-org ()
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "," 'org-priority
+    )
   (setq org-startup-with-inline-images nil)
   )
 
@@ -94,20 +97,11 @@
   )
 
 (defun tshan/post-init-org-agenda ()
-  :config
   (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
+    "," 'org-agenda-priority
     "j" 'org-agenda-clock-goto
     "oa" 'org-agenda-archives-mode
     "R" 'org-refile
-    )
-  (evilified-state-evilify-map org-agenda-mode-map
-    :mode org-agenda-mode
-    :bindings
-    "j" 'org-agenda-next-item
-    "k" 'org-agenda-previous-item
-    (kbd "C-j") 'org-agenda-next-line
-    (kbd "C-k") 'org-agenda-previous-line
-    (kbd "<escape>") 'org-agenda-exit
     )
   )
 

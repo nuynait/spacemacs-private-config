@@ -32,8 +32,6 @@
 ;; make org-agenda done tasks having the same font scale
 (custom-set-faces
  '(org-agenda-done ((t (:foreground "#86dc2f" :height 1.0)))))
-(custom-set-faces
- '(org-scheduled-today ((t (:foreground "#bc6ec5" :height 1.0)))))
 
 ;; ORG - todo workflow
 (setq org-todo-keywords

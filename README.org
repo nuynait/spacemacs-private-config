@@ -4,3 +4,8 @@
   3. clone this repository to ~/.spacemacs.d/
   4. ~brew install ispell~ for flyspell
   5. open Emacs to install
+* Support ORG Mode Image Resize
+  1. install ~imagemagick~
+  2. try to get info of mac emacs using ~brew info emacs~
+  3. install mac emacs ~brew install --with-cocoa --with-imagemagick emacs~
+  4. ~evil-expression~, ~(image-type-available-p 'imagemagick)~ should return ~t~
