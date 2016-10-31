@@ -9,3 +9,5 @@
   2. try to get info of mac emacs using ~brew info emacs~
   3. install mac emacs ~brew cask install --with-cocoa --with-imagemagick emacs~
   4. ~evil-expression~, ~(image-type-available-p 'imagemagick)~ should return ~t~
+* Support ERC
+  1. ~brew install terminal-notifier~

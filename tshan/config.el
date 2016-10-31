@@ -27,11 +27,14 @@
 (setq org-lowest-priority 69)
 
 ;; make agenda today's font the same as others
-(setq spacemacs-theme-org-agenda-height nil)
+;; (setq spacemacs-theme-org-agenda-height nil)
 
 ;; make org-agenda done tasks having the same font scale
 (custom-set-faces
  '(org-agenda-done ((t (:foreground "#86dc2f" :height 1.0)))))
+
+(custom-set-faces
+ '(org-scheduled-today ((t (:foreground "DodgerBlue2" :height 1.0)))))
 
 ;; ORG - todo workflow
 (setq org-todo-keywords
@@ -74,6 +77,12 @@
 (setq org-agenda-todo-ignore-deadlines (quote all))
 (setq org-agenda-todo-ignore-scheduled (quote all))
 
+;; ORG - iCAL Export
+(setq org-icalendar-combined-agenda-file "~/Dropbox/ORG Notebook/org.ics")
+;; (setq org-icalendar-include-todo nil)
+(setq org-icalendar-use-scheduled '(event-if-todo))
+(setq org-icalendar-use-deadline '(event-if-todo))
+(setq org-icalendar-alarm-time 30)
 
 ;; ORG - idea capture
 (setq org-capture-templates

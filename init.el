@@ -55,6 +55,7 @@ values."
      spell-checking
      syntax-checking
      ;; version-control
+     erc
      tshan
      )
    ;; List of additional packages that will be installed without being

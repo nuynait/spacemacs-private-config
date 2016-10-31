@@ -20,6 +20,6 @@
     "k" 'org-agenda-previous-item
     (kbd "C-j") 'org-agenda-next-line
     (kbd "C-k") 'org-agenda-previous-line
-    (kbd "<escape>") 'org-agenda-exit
+    (kbd "<escape>") 'org-agenda-follow-mode
     )
   )

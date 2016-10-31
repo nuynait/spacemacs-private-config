@@ -39,9 +39,25 @@
     org-agenda
     spaceline
     org
+    ;; erc
+    ;; erc-terminal-notifier
     )
   )
 
+
+;; (defun tshan/init-erc-terminal-notifier ()
+;;   (use-package erc-terminal-notifier
+;;     ;; custom config
+;;     )
+;;   )
+
+;; (defun tshan/post-init-erc ()
+;;   (setq erc-server-list `(("192.168.86.106"
+;;                            :port "6667"
+;;                            :nick "Jerry"
+;;                            )
+;;                           ))
+;;   )
 
 (defun tshan/init-youdao-dictionary ()
   (use-package youdao-dictionary
@@ -102,6 +118,7 @@
     "j" 'org-agenda-clock-goto
     "oa" 'org-agenda-archives-mode
     "R" 'org-refile
+    "e" 'org-icalendar-combine-agenda-files
     )
   )
 
