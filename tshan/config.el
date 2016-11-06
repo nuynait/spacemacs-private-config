@@ -121,3 +121,10 @@
 
 ;; ORG - tag completion from all org files
 (setq org-complete-tags-always-offer-all-agenda-tags t)
+
+;; custom layout
+(spacemacs|define-custom-layout "Blog"
+  :binding "b"
+  :body
+  (dired-at-point "~/repo/blog/source/_posts")
+  )
