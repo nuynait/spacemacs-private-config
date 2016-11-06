@@ -1,0 +1,8 @@
+ -*- mode: snippet -*-
+# name: blog-warning
+# key: blog-warning
+# --
+
+#+BEGIN_QUOTE
+  quote
+#+END_QUOTE
