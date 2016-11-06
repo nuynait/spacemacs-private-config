@@ -1,0 +1,8 @@
+ -*- mode: snippet -*-
+# name: blog-readmore
+# key: blog-readmore
+# --
+
+#+BEGIN_HTML
+  <!--more-->
+#+END_HTML

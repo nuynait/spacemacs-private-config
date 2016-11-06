@@ -123,8 +123,14 @@
 (setq org-complete-tags-always-offer-all-agenda-tags t)
 
 ;; custom layout
-(spacemacs|define-custom-layout "Blog"
+(spacemacs|define-custom-layout "@Blog"
   :binding "b"
   :body
   (dired-at-point "~/repo/blog/source/_posts")
+  )
+
+(spacemacs|define-custom-layout "@Agenda"
+  :binding "a"
+  :body
+  (org-agenda-list)
   )
