@@ -1,6 +1,6 @@
  -*- mode: snippet -*-
-# name: blog-warning
-# key: blog-warning
+# name: begin-quote
+# key: begin-quote
 # --
 
 #+BEGIN_QUOTE

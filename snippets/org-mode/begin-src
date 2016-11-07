@@ -1,6 +1,6 @@
  -*- mode: snippet -*-
-# name: blog-warning
-# key: blog-warning
+# name: begin-src
+# key: begin-src
 # --
 
 #+BEGIN_SRC c

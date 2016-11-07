@@ -1,6 +1,6 @@
  -*- mode: snippet -*-
-# name: blog-warning
-# key: blog-warning
+# name: begin-example
+# key: begin-example
 # --
 
 #+BEGIN_EXAMPLE
