@@ -39,6 +39,7 @@
     org-agenda
     spaceline
     org
+    blog-admin
     ;; erc
     ;; erc-terminal-notifier
     )
@@ -59,6 +60,20 @@
 ;;                           ))
 ;;   )
 
+(defun tshan/init-blog-admin ()
+  (use-package blog-admin
+    :init
+    (progn
+      ;; custom config
+      (setq blog-admin-backend-path "~/Dropbox/Blog")
+      (setq blog-admin-backend-type 'hexo)
+      (setq blog-admin-backend-new-post-in-drafts t) ;; create new post in drafts by default
+      (setq blog-admin-backend-new-post-with-same-name-dir t) ;; create same-name directory with new post
+      (setq blog-admin-backend-hexo-config-file "_config.yml") ;; default assumes _config.yml
+      )
+    )
+  )
+
 (defun tshan/init-youdao-dictionary ()
   (use-package youdao-dictionary
     :defer t
@@ -75,9 +90,9 @@
   )
 
 (defun tshan/post-init-swift-mode ()
-    ;; customize setting for swift package
-    (setq swift-mode:basic-offset 2)
-    )
+  ;; customize setting for swift package
+  (setq swift-mode:basic-offset 2)
+  )
 
 ;; spaceline customization
 (defun tshan/post-init-spaceline()
@@ -99,8 +114,8 @@
     ;; Hungry delete wrecks deft's DEL override
     (when (fboundp 'hungry-delete-mode)
       (hungry-delete-mode -1)))
-    ;; When opening it you always want to filter right away
-    ;; (evil-insert-state nil))
+  ;; When opening it you always want to filter right away
+  ;; (evil-insert-state nil))
 
   ;; config keybindings
   :config (spacemacs/set-leader-keys-for-major-mode 'deft-mode
@@ -125,36 +140,36 @@
 
 ;; make auto complete min prefix 1
 (defun tshan/post-init-company ()
-    (setq company-minimum-prefix-length 1)
-    (add-hook 'after-init-hook 'global-company-mode)
-    ;; helper used in post-init-company
-    (defun text-mode-hook-setup ()
-      ;; make `company-backends' local is critcal
-      ;; or else, you will have completion in every major mode, that's very annoying!
-      (make-local-variable 'company-backends)
+  (setq company-minimum-prefix-length 1)
+  (add-hook 'after-init-hook 'global-company-mode)
+  ;; helper used in post-init-company
+  (defun text-mode-hook-setup ()
+    ;; make `company-backends' local is critcal
+    ;; or else, you will have completion in every major mode, that's very annoying!
+    (make-local-variable 'company-backends)
 
-      ;; company-ispell is the plugin to complete words
+    ;; company-ispell is the plugin to complete words
+    (add-to-list 'company-backends 'company-ispell)
+
+    ;; OPTIONAL, if `company-ispell-dictionary' is nil, `ispell-complete-word-dict' is used
+    ;;  but I prefer hard code the dictionary path. That's more portable.
+    (setq company-ispell-dictionary (file-truename "~/.spacemacs.d/tshan/english-words.txt")))
+  (add-hook 'text-mode-hook 'text-mode-hook-setup)
+
+  ;; toggle
+  (defun toggle-company-ispell ()
+    (interactive)
+    (cond
+     ((memq 'company-ispell company-backends)
+      (setq company-backends (delete 'company-ispell company-backends))
+      (message "company-ispell disabled"))
+     (t
       (add-to-list 'company-backends 'company-ispell)
-
-      ;; OPTIONAL, if `company-ispell-dictionary' is nil, `ispell-complete-word-dict' is used
-      ;;  but I prefer hard code the dictionary path. That's more portable.
-      (setq company-ispell-dictionary (file-truename "~/.spacemacs.d/tshan/english-words.txt")))
-    (add-hook 'text-mode-hook 'text-mode-hook-setup)
-
-    ;; toggle
-    (defun toggle-company-ispell ()
-      (interactive)
-      (cond
-       ((memq 'company-ispell company-backends)
-        (setq company-backends (delete 'company-ispell company-backends))
-        (message "company-ispell disabled"))
-       (t
-        (add-to-list 'company-backends 'company-ispell)
-        (message "company-ispell enabled!"))))
+      (message "company-ispell enabled!"))))
   )
 
 
-  "The list of Lisp packages required by the tshan layer.
+"The list of Lisp packages required by the tshan layer.
 
 Each entry is either:
 

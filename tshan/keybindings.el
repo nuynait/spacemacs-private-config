@@ -5,11 +5,7 @@
 (spacemacs/set-leader-keys "oot" 'org-clock-display)
 (spacemacs/set-leader-keys "oa" 'org-agenda)
 
-;; dictionary auto-completion
-(spacemacs/set-leader-keys "tc" 'toggle-company-ispell)
-
-;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
+;; org-agenda keybinding
 (spacemacs|use-package-add-hook org-agenda
   :post-config
   (evilified-state-evilify-map org-agenda-mode-map
@@ -23,3 +19,15 @@
     (kbd "<escape>") 'org-agenda-follow-mode
     )
   )
+
+;; dictionary auto-completion
+(spacemacs/set-leader-keys "tc" 'toggle-company-ispell)
+
+;; remove esc as meta keybinding
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+;; blog
+(spacemacs/set-leader-keys "ob" 'blog-admin-start)
+
+;; snippet
+(spacemacs/set-leader-keys "oi" 'yas-insert-snippet)

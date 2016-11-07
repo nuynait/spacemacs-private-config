@@ -126,7 +126,9 @@
 (spacemacs|define-custom-layout "@Blog"
   :binding "b"
   :body
-  (dired-at-point "~/repo/blog/source/_posts")
+  (dired-at-point "~/Dropbox/Blog/source/_posts")
+  (split-window-vertically)
+  (dired-at-point "~/Dropbox/ORG Notebook/")
   )
 
 (spacemacs|define-custom-layout "@Agenda"
