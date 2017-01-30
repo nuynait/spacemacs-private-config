@@ -1,9 +1,13 @@
-* Install
+* Install Spacemacs
   1. download Mac Emacs
-  2. install spacemacs [[http://spacemacs.org/][Here]]
-  3. clone this repository to ~/.spacemacs.d/
-  4. ~brew install ispell~ for flyspell
-  5. open Emacs to install
+  2. install spacemacs from my private repository
+  3. go to my phabricator clone it to ~/.emacs.d/
+  4. ~cd ~/.emacs.d/~ and ~git co tshan~
+  5. open emacs and check
+* Install Spacemacs Configuration
+  1. clone this repository to ~/.spacemacs.d/
+  2. ~brew install ispell~ for flyspell
+  3. open Emacs to install
 * Support ORG Mode Image Resize
   1. install ~imagemagick~
   2. try to get info of mac emacs using ~brew info emacs~
