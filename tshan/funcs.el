@@ -75,3 +75,82 @@ If FILEXT is provided, return files with extension FILEXT instead."
 	(dolist (org-file (sa-find-org-file-recursively file-or-dir filext)
 			  org-file-list) ; add files found to result
 	  (add-to-list 'org-file-list org-file)))))))
+
+;; Sync with Tyme2
+ (defun applescript-quote-string (argument)
+    "Quote a string for passing as a string to AppleScript."
+    (if (or (not argument) (string-equal argument ""))
+        "\"\""
+      ;; Quote using double quotes, but escape any existing quotes or
+      ;; backslashes in the argument with backslashes.
+      (let ((result "")
+            (start 0)
+            end)
+        (save-match-data
+          (if (or (null (string-match "[^\"\\]" argument))
+                  (< (match-end 0) (length argument)))
+              (while (string-match "[\"\\]" argument start)
+                (setq end (match-beginning 0)
+                      result (concat result (substring argument start end)
+                                     "\\" (substring argument end (1+ end)))
+                      start (1+ end))))
+          (concat "\"" result (substring argument start) "\"")))))
+
+  (defun start-tyme ()
+    (setq taskname (nth 4 (org-heading-components)))
+    (do-applescript
+     (format
+      "set tsk to %s
+      set proj to %s
+      tell application \"Tyme2\"
+      set judgep to false
+      repeat with someproj in every project
+        if ((name of someproj) is proj) then set judgep to true
+      end repeat
+      if (judgep is false) then make new project with properties {name:proj}
+      end tell
+      tell application \"Tyme2\"
+      set judget to false
+      repeat with sometsk in every task of project proj
+        if ((name of sometsk) is tsk) then set judget to true
+      end repeat
+      if (judget is false) then make new task of (project proj) with properties {name:tsk, taskType:\"timed\", completed:false}
+      end tell
+      tell application \"Tyme2\"
+      set t to id of the first item of (every task of project proj whose name = tsk)
+      StartTrackerForTaskID t
+      end tell"
+      (applescript-quote-string taskname)
+      (applescript-quote-string (file-name-base))
+      )))
+
+  (defun stop-tyme ()
+    (setq taskname (nth 4 (org-heading-components)))
+    (do-applescript
+     (format
+      "set tsk to %s
+         set proj to %s
+         tell application \"Tyme2\"
+         set judgep to false
+         repeat with someproj in every project
+           if ((name of someproj) is proj) then set judgep to true
+         end repeat
+         if (judgep is false) then make new project with properties {name:proj}
+         end tell
+         tell application \"Tyme2\"
+         set judget to false
+         repeat with sometsk in every task of project proj
+           if ((name of sometsk) is tsk) then set judget to true
+         end repeat
+         if (judget is false) then make new task of (project proj) with properties {name:tsk, taskType:\"timed\", completed:false}
+         end tell
+         tell application \"Tyme2\"
+         set t to id of the first item of (every task of project proj whose name = tsk)
+         StopTrackerForTaskID t
+         end tell"
+      (applescript-quote-string taskname)
+      (applescript-quote-string (file-name-base))
+      )))
+
+    (add-hook 'org-clock-in-hook 'start-tyme)
+    (add-hook 'org-clock-out-hook 'stop-tyme)

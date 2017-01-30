@@ -1,0 +1,8 @@
+ -*- mode: snippet -*-
+# name: begin-comment
+# key: begin-comment
+# --
+
+#+BEGIN_COMMENT
+
+#+END_COMMENT
