@@ -1,0 +1,8 @@
+ -*- mode: snippet -*-
+# name: begin-latex
+# key: begin-latex
+# --
+
+#+BEGIN_EXPORT latex
+
+#+END_EXPORT latex
