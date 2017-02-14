@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     (c-c++ :variable c-c++-enable-clang-support t)
      ruby
      yaml
      ivy
