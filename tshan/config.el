@@ -37,6 +37,14 @@
   (custom-set-faces
    '(org-scheduled-today ((t (:foreground "DodgerBlue2" :height 1.0)))))
 
+  ;; make the today title the same size
+  (custom-set-faces
+   '(org-agenda-date-today ((t (:foreground "#4f97d7" :height 1.0)))))
+
+  ;; custom deadline warning
+  (custom-set-faces
+   '(org-upcoming-deadline ((t (:foreground "MediumPurple3")))))
+
   ;; ORG - todo workflow
   (setq org-todo-keywords
         '((sequence "TODO....(t)" "WAIT....(w@/!)" "|" "DONE....(d!)" "CANCEL..(c@/!)")
@@ -63,6 +71,8 @@
   (setq org-agenda-dim-blocked-tasks t)
 
   ;; ORG - agenda custom command
+  (setq org-agenda-custom-commands '(
+                                     ))
   (setq org-agenda-custom-commands
         '(
           ("p" . "筛选任务(目前无效果，需要修复)")
@@ -71,6 +81,12 @@
           ("pc" "一定要完成但是不着急的任务" tags "+PRIORITY=\"C\"")
           ("pd" "做完有好处的任务" tags "+PRIORITY=\"D\"")
           ("pe" "无所谓做不做的任务" tags "+PRIORITY=\"E\"")
+          ("r" "View all Deadlines" agenda "display all the todos with deadlines" (
+                                                                                   (org-agenda-span 'month)
+                                                                                   (org-agenda-time-grid nil)
+                                                                                   (org-agenda-show-all-dates nil)
+                                                                                   (org-agenda-entry-types '(:deadline)) ;; this entry excludes :scheduled
+                                                                                   (org-deadline-warning-days 0) ))
           ))
 
   ;; don't show tasks that are scheduled or have deadlines
@@ -115,6 +131,17 @@
                                    (search . "%i%-8:T")))
   (setq org-agenda-time-leading-zero t)
   (setq org-agenda-remove-tags t)
+  (setq org-agenda-skip-deadline-prewarning-if-scheduled t)
+  (setq org-agenda-skip-deadline-if-done t)
+  (setq org-deadline-warning-days 4)
+  (setq org-agenda-deadline-faces
+        '((1.0 . org-warning)
+          (0.5 . org-upcoming-deadline)
+          (0.0 . org-upcoming-deadline)))
+  (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+  (setq org-columns-default-format
+        "%1PRIORITY(P) %6TODO %50ITEM %5Effort(Effort){:} %5CLOCKSUM(Clock){:} %16TIMESTAMP")
+  (setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 0:45 1:00 1:30 2:00 2:30 3:00 3:30 4:00 4:30 5:00 5:30 6:00 7:00 8:00 9:00 10:00 12:00 14:00 16:00 18:00 20:00"))))
 
   ;; ORG - use org-agenda-files to enable tag search
   (setq org-agenda-files
@@ -137,6 +164,11 @@
     :body
     (org-agenda-list)
     )
+
+  ;; time format
+  (custom-set-variables
+   '(org-display-custom-times t)
+   '(org-time-stamp-custom-formats (quote ("<%y-%m-%d %a>" . "<%y-%m-%d %a %H:%M>"))))
   )
 
 ;; Helm fuzzy-match not supported
