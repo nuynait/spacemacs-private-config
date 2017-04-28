@@ -32,8 +32,9 @@ values."
    dotspacemacs-configuration-layers
    '(
      (c-c++ :variable c-c++-enable-clang-support t)
-     ruby
-     yaml
+     ruby ;; for pod files
+     yaml ;; for blog config files
+     python
      ivy
      html
      ;; ----------------------------------------------------------------

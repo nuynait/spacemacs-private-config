@@ -36,6 +36,7 @@
     company ;; when changing exists package, need to include it as well
     deft
     swift-mode
+    python
     org-agenda
     spaceline
     org
@@ -94,6 +95,9 @@
   (setq swift-mode:basic-offset 2)
   )
 
+(defun tshan/post-init-python ()
+  (setq python-indent-offset 2))
+
 ;; spaceline customization
 (defun tshan/post-init-spaceline()
   (spacemacs/toggle-mode-line-org-clock-on)
@@ -136,7 +140,6 @@
     "e" 'org-icalendar-combine-agenda-files
     )
   )
-
 
 ;; make auto complete min prefix 1
 (defun tshan/post-init-company ()
