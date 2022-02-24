@@ -30,7 +30,8 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(shell-scripts
+     vimscript
      (c-c++ :variable c-c++-enable-clang-support t)
      ruby ;; for pod files
      yaml ;; for blog config files
@@ -61,6 +62,9 @@ values."
      ;; version-control
      erc
      tshan
+     ;; To use this leetcode layer, do:
+     ;; git clone https://github.com/anmoljagetia/leetcode-emacs-layer.git ~/.emacs.d/private/myleetcode
+     myleetcode
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
