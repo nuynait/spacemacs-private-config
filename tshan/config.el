@@ -95,7 +95,7 @@
   (setq org-agenda-todo-ignore-scheduled (quote all))
 
   ;; ORG - iCAL Export
-  (setq org-icalendar-combined-agenda-file "~/Dropbox/ORG Notebook/org.ics")
+  (setq org-icalendar-combined-agenda-file "~/Drive/ORG Notebook/org.ics")
   ;; (setq org-icalendar-include-todo nil)
   (setq org-icalendar-use-scheduled '(event-if-todo))
   (setq org-icalendar-use-deadline '(event-if-todo))
@@ -103,11 +103,11 @@
 
   ;; ORG - idea capture
   (setq org-capture-templates
-        '(("t" "Task" entry (file+headline "~/dropbox/ORG Notebook/Idea Capture/gtd/gtd.org" "Inbox")
+        '(("t" "Task" entry (file+headline "~/Drive/ORG Notebook/Idea Capture/gtd/gtd.org" "Inbox")
            "* TODO.... [#C] %?\n  %i")
-          ("s" "Task in sequence" entry (file+headline "~/dropbox/ORG Notebook/Idea Capture/gtd/gtd.org" "Inbox")
+          ("s" "Task in sequence" entry (file+headline "~/Drive/ORG Notebook/Idea Capture/gtd/gtd.org" "Inbox")
            "* SUBTREE. [#C] %?\n  :PROPERTIES:\n  :ORDERED:  t\n  :END:\n  %i")
-          ("j" "Journal" entry (file+datetree "~/dropbox/ORG Notebook/Idea Capture/journal.org")
+          ("j" "Journal" entry (file+datetree "~/Drive/ORG Notebook/Idea Capture/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")))
 
   ;; ORG - refile
@@ -145,7 +145,7 @@
 
   ;; ORG - use org-agenda-files to enable tag search
   (setq org-agenda-files
-        (append (sa-find-org-file-recursively "~/Dropbox/ORG Notebook/" "org")))
+        (append (sa-find-org-file-recursively "~/Drive/ORG Notebook/" "org")))
 
   ;; ORG - tag completion from all org files
   (setq org-complete-tags-always-offer-all-agenda-tags t)
@@ -154,9 +154,9 @@
   (spacemacs|define-custom-layout "@Blog"
     :binding "b"
     :body
-    (dired-at-point "~/Dropbox/Blog/source/_posts")
+    (dired-at-point "~/Drive/Blog/source/_posts")
     (split-window-vertically)
-    (dired-at-point "~/Dropbox/ORG Notebook/")
+    (dired-at-point "~/Drive/ORG Notebook/")
     )
 
   (spacemacs|define-custom-layout "@Agenda"
